@@ -52,6 +52,7 @@ const EyeIcon = ({ show }) => (
 )
 
 const Register = () => {
+  const { register, setAuth, socialLoginHandler } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -61,7 +62,6 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [agreeTerms, setAgreeTerms] = useState(false)
-  const { register } = useAuth()
   const navigate = useNavigate()
 
   const validateForm = () => {
@@ -116,14 +116,22 @@ const Register = () => {
     
     setLoading(true)
     
-    // Role is always 'user' for public registration
     const result = await register({ name, email, password, phone }, 'user')
     
-    if (result.success) {
+    if (result.success&&result.user) {
+       if (result.accessToken) {
+        setAuth(result.accessToken, result.user);
+      }
+      
       toast.success('Registration successful! Please login.')
-      setTimeout(() => {
-        navigate('/login')
-      }, 1500)
+
+      if (result.user?.role === "admin") {
+          navigate("/admin");
+        } else if (result.user?.role === "delivery") {
+          navigate("/delivery");
+        } else {
+          navigate("/home");
+        }
     } else {
       toast.error(result.message || 'Registration failed. Please try again.')
     }
@@ -134,15 +142,15 @@ const Register = () => {
   return (
     <>
       <Helmet>
-        <title>Create Account | FoodieDash</title>
-        <meta name="description" content="Join FoodieDash - Create your account and start ordering delicious food" />
+        <title>Create Account | Carvix</title>
+        <meta name="description" content="Join Carvix - start ordering delicious food" />
       </Helmet>
 
       <div className="register-container">
         <div className="register-card">
           <div className="register-header">
             <div className="brand-logo">
-              <span className="brand-icon">🍕</span>
+              <img src="../../assets/carvix-logo.png" alt="carvix logo" />
             </div>
             <h2>Create account</h2>
             <p className="register-subtitle">Join us and start your food journey</p>
@@ -288,14 +296,6 @@ const Register = () => {
           <div className="register-footer">
             <p>
               Already have an account? <Link to="/login">Sign in</Link>
-            </p>
-          </div>
-
-          {/* Note for users about delivery partner registration */}
-          <div className="register-note">
-            <p className="note-text">
-              📝 <strong>Note:</strong> Delivery partner accounts can only be created by admin.
-              Please contact support if you're interested in becoming a delivery partner.
             </p>
           </div>
         </div>

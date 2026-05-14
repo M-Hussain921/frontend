@@ -128,12 +128,11 @@ const Landing = () => {
 
   return (
     <div className="landing">
-
+<img src="../assets/carvix-logo.png" alt="carvix" />
       {/* ==================== NAVBAR ==================== */}
       <nav className={`landing-nav ${scrolled ? 'scrolled' : ''}`}>
         <Link to="/" className="logo">
-          <span className="logo-dot" />
-          FoodieDash
+          <img src="../assets/carvix-logo.png" alt="carvix logo" />
         </Link>
 
         {/* Desktop Buttons */}

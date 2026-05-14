@@ -1,3 +1,5 @@
+//====== Categories ======
+
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { getCategories, createCategory, updateCategory, deleteCategory } from '../../services/admin'

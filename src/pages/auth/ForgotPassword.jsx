@@ -154,7 +154,7 @@ const ForgotPassword = () => {
   return (
     <>
       <Helmet>
-        <title>Forgot Password | Food Delivery</title>
+        <title>Forgot Password | Carvix</title>
         <meta name="description" content="Reset your password" />
       </Helmet>
 
@@ -196,7 +196,6 @@ const ForgotPassword = () => {
               <div className="form-group">
                 <label>Email Address</label>
                 <div className="input-icon">
-                  <span className="icon">📧</span>
                   <input
                     type="email"
                     value={email}
@@ -219,7 +218,7 @@ const ForgotPassword = () => {
               <div className="form-group">
                 <label>OTP Code</label>
                 <div className="input-icon">
-                  <span className="icon">🔐</span>
+                  <span className="icon"></span>
                   <input
                     type="text"
                     value={otp}
@@ -256,7 +255,7 @@ const ForgotPassword = () => {
               <div className="form-group">
                 <label>New Password</label>
                 <div className="input-icon">
-                  <span className="icon">🔒</span>
+                  <span className="icon"></span>
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={newPassword}

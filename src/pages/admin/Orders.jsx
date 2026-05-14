@@ -22,7 +22,7 @@ const Orders = () => {
   const statusOptions = ['pending', 'confirmed', 'preparing', 'ready', 'assigned', 'accepted', 'picked_up', 'out_for_delivery', 'delivered', 'cancelled']
 
   useEffect(() => {
-    fetchOrders()
+    fetchOrders();
     fetchDeliveryBoys()
   }, [])
 

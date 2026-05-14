@@ -10,7 +10,7 @@ const AdminLayout = ({ children }) => {
       <div className="main-area">
         <AdminHeader />
         <div className="admin-main-content">
-          {children}
+          
         </div>
       </div>
     </div>
